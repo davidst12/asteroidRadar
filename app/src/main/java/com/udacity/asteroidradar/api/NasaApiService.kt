@@ -14,8 +14,6 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 import java.util.SplittableRandom
 
-//private const val BASE_URL = "https://api.nasa.gov/planetary/apod?api_key=8SOGeWqFgISMgEbT1hAqRs9D2RRNVjmhkPaBLnjk"
-
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
     .build()
@@ -27,11 +25,11 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface NasaApiService{
-    //@GET("neo/rest/v1/feed?start_date=2023-01-15&end_date=2023-01-22&api_key=8SOGeWqFgISMgEbT1hAqRs9D2RRNVjmhkPaBLnjk")
+    //@GET("neo/rest/v1/feed?start_date=2023-01-15&end_date=2023-01-22&api_key=DEMO_KEY")
     @GET("neo/rest/v1/feed")
     suspend fun getProperties(@Query("start_date") start_date: String, @Query("api_key") api_key: String): String
 
-    //@GET("https://api.nasa.gov/planetary/apod?api_key=8SOGeWqFgISMgEbT1hAqRs9D2RRNVjmhkPaBLnjk")
+    //@GET("https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY")
     @GET("https://api.nasa.gov/planetary/apod")
     suspend fun getImageOfTheDay(@Query("api_key") api_key: String): String
 }
